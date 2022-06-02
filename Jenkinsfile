@@ -1,6 +1,12 @@
 ﻿pipeline {
-    agent { dockerfile true }
-   
+    agent {
+  dockerfile {
+    dir 'https://github.com/Tao7Horus/SpringCore_pipeline.git'
+    filename 'Dockerfile'
+    registryCredentialsId 'tao7gitlab'
+    registryUrl 'registry.gitlab.com/tinhchieuphuoc/cicd-automation-test'
+  }
+}
     environment {
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
